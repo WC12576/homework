@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clock</title>
+    <style>
+        body,
+        div,
+        span {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            width: 100%
+        }
+        
+        .t1 {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(farthest-side ellipse at 50% 70%, hsla(210, 1%, 78%, 0.73), hsla(225, 4%, 18%, 0.8));
+        }
+        
+        .t2 {
+            position: absolute;
+            top: 30%;
+            height: 350px;
+            width: 350px;
+            border-radius: 60px;
+            background: #fff;
+            background-image: linear-gradient(180deg, #ffffff 40px, #ddecf2 210px, #B1F2FC);
+        }
+        
+        .t2::before {
+            content: "";
+            position: absolute;
+            box-shadow: 0px -4px 3px 3px #b8bdca inset;
+            border-radius: 60px;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .t2::after {
+            content: "";
+            height: 10px;
+            width: 300px;
+            position: absolute;
+            top: 99%;
+            margin-left: 25px;
+            background: #2a2a2b;
+            filter: blur(8px);
+        }
+        
+        .t3 {
+            position: relative;
+            margin: 70px;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            background-image: linear-gradient(#f9fdff 160px, #B1F2FC);
+            box-shadow: 5px 25px 30px -10px #7a8fae;
+            font-size: 20px;
+            color: #8da6b8;
+            font-family: Arial;
+        }
+        
+        .hour3 {
+            position: absolute;
+            top: 50%;
+            right: 15%;
+            margin-top: -9px;
+        }
+        
+        .hour6 {
+            position: absolute;
+            right: 50%;
+            bottom: 15%;
+            margin-right: -5px;
+        }
+        
+        .hour9 {
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            margin-top: -9px;
+        }
+        
+        .hour12 {
+            position: absolute;
+            right: 50%;
+            top: 15%;
+            margin-right: -10px;
+        }
+        
+        .hour-hand {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 50px;
+            height: 6px;
+            border-radius: 5px;
+            margin-top: -3px;
+            margin-left: -12px;
+            background: #1aa9d8;
+            transform: rotate(-90deg);
+            transform-origin: 12px 3px;
+        }
+        
+        .minute-hand {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 65px;
+            height: 4px;
+            margin-top: -2px;
+            margin-left: -16px;
+            border-radius: 5px;
+            background: #1aa9d8;
+            transform: rotate(-90deg);
+            transform-origin: 16px 2px;
+        }
+        
+        .second-hand {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 80px;
+            height: 2px;
+            margin-top: -1px;
+            margin-left: -20px;
+            border-radius: 5px;
+            background: #1aa9d8;
+            transform: rotate(-90deg);
+            transform-origin: 20px 1px;
+        }
+        
+        .point {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: #8ba3b6;
+            width: 12px;
+            height: 12px;
+            margin-left: -6px;
+            margin-top: -6px;
+            border-radius: 50%;
+        }
+        
+        .point::after {
+            content: "";
+            position: absolute;
+            background: #cee3ec;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            left: 3px;
+            top: 3px;
+        }
+        .hand{
+            filter: drop-shadow(2px 2px 1px #b8bdca);
+            position: absolute;
+            top:50%;
+            left: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="t1">
+        <div class="t2">
+            <div class="t3">
+                <span class="hour hour3">3</span>
+                <span class="hour hour6">6</span>
+                <span class="hour hour9">9</span>
+                <span class="hour hour12">12</span>
+                <div class="hand">
+                    <div class="hand">
+                        <div class="hour-hand"></div>
+                        <div class="minute-hand"></div>
+                        <div class="second-hand"></div>
+                        <div class="point"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function step() {
+            var now = new Date()
+            var hours = now.getHours()
+            var minutes = now.getMinutes()
+            var seconds = now.getSeconds()
+            if (hours > 12) {
+                hours = hours - 12
+            }
+            var secondDeg = seconds / 60 * 360
+            var minuteDeg = minutes / 60 * 360 + seconds / 60 / 60 * 360
+            var hourDeg = hours / 12 * 360 + minutes / 60 / 12 * 360 + seconds / 60 / 60 / 12 * 360
+            document.querySelector('.hour-hand').style.transform = `rotate(${-90 + hourDeg}deg)`
+            document.querySelector('.minute-hand').style.transform = `rotate(${-90 + minuteDeg}deg)`
+            document.querySelector('.second-hand').style.transform = `rotate(${-90 + secondDeg}deg)`
+
+
+        }
+        step()
+        setInterval(function () {
+            step()
+        }, 1000)
+    </script>
+</body>
+
+</html>

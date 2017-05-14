@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="login">登录</button>
+    <button id="obtain">获取</button>
+    <script src="BOM.js"></script>
+    <script>
+        login.onclick = function(){
+            $.bom.openAtCenter(600,500,`iframe.html`)
+        }
+        obtain.onclick = function(){
+            console.log($.bom.search('我'))
+            console.log($.bom.search('a'))
+            //console.log($.bom.search('xxx','饥人谷'))
+        }
+    </script>
+   
+</body>
+</html>

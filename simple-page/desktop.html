@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>阴阳师</title>
+        <style>
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: url(chun.jpg)
+        }
+        
+        ul,
+        ol {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .logo {
+            text-align: center;
+        }
+        
+        .logo img {
+            display: inline-block;
+            max-height: 300px;
+            border-radius: 100%;
+            margin-top: 62px;
+        }
+        
+        .logo>ul {
+            margin-top: 28px;
+        }
+        
+        .logo ul li {
+            background: url(chun4.jpg);
+            display: inline-block;
+            min-width: 128px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 24px;
+            line-height: 24px;
+        }
+        
+        .dinner {
+            background: url(chun3.jpg);
+            text-align: center;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .dinner .line-one {
+            display: none;
+        }
+        
+        .dinner .line-one h2 {
+            background:url(chun3.jpg);
+            display: inline-block;
+            border-radius: 14px;
+            min-width: 376px;
+            line-height: 40px;
+            margin-left: 132px;
+            margin-right: 132px;
+            margin-top: 75px;
+            margin-bottom: 35px;
+        }
+        
+        .dinner .line-one p {
+            background:url(chun3.jpg);
+            border-radius: 14px;
+            margin-left: 52px;
+            margin-right: 52px;
+            margin-top: 0px;
+            margin-bottom: 19px,
+        }
+        
+        .dinner .line-one .list-thr {
+            padding-bottom: 102px;
+        }
+        
+        .dinner .line-two h2 {
+             background:url(chun3.jpg);
+            display: inline-block;
+            border-radius: 14px;
+            min-width: 200px;
+            line-height: 40px;
+            margin-left: 60px;
+            margin-right: 60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .dinner .line-two p {
+             background:url(chun3.jpg);
+            display: inline-block;
+            border-radius: 14px;
+            min-width: 250px;
+            line-height: 24px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .dinner .line-two .list-one {
+            padding-top: 46px;
+            margin-bottom: 36px;
+        }
+        
+        .dinner .line-two .list-two {
+            padding-bottom: 51px;
+        }
+        
+        @media(min-width:500px) {
+            .dinner .line-two {
+                display: none;
+            }
+            .dinner .line-one {
+                display: block;
+            }
+        }
+        
+        .products ol {
+            margin-top: 42px;
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+        
+        .products .img {
+            background: url(chun1.jpg);
+            text-align: center;
+        }
+        
+        .products img {
+            border-radius: 4px;
+            max-width: 200px;
+            margin-bottom: 20px;
+            margin-top: 32px;
+        }
+        
+        .products ol h3 {
+            background: url(chun1.jpg);
+            border-radius: 4px;
+            max-width: 204px;
+            line-height: 24px;
+            margin-top: 20px;
+            margin-bottom: 14px;
+        }
+        
+        .products ol p {
+            background:url(chun1.jpg);
+            border-radius: 4px;
+            max-width: 288px;
+            line-height: 16px;
+            margin-top: 14px;
+            margin-bottom: 32px;
+        }
+        
+        @media(min-width:500px) {
+            .products ol {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .products ol li {
+                width: calc(50% - 16px);
+                box-sizing: border-box;
+            }
+        }
+        
+        @media(min-width:1000px) {
+            .products>ol>li {
+                width: calc(33.333333% - 21.333333px);
+            }
+        }
+        
+        @media(min-width:1200px) {
+            .products ol {
+                max-width: 928px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="logo">
+        <div class="img">
+            <img src="zhujue.png" alt="">
+        </div>
+        <ul>
+            <li>玄学</li>
+            <li>拉条</li>
+            <li>控制</li>
+            <li>劝退</li>
+        </ul>
+    </section>
+    <section class="dinner">
+        <div class="line-two">
+            <div class="list-one">
+                <h2>游戏虐我千百遍</h2>
+                <h2>我待游戏如初恋</h2>
+            </div>
+            <div class="list-two">
+                <p>摆好姿势钻研玄学</p>
+                <p>一发入魂脱非入欧</p>
+            </div>
+        </div>
+        <div class="line-one">
+            <div>
+                <h2>游戏虐我千百遍 我待游戏如初恋</h2>
+            </div>
+            <div class="list-thr">
+                <p>摆好姿势钻研玄学</p>
+                <p>一发入魂脱非入欧</p>
+            </div>
+        </div>
+    </section>
+    <section class="products">
+        <ol>
+            <li>
+                <div class="img">
+                    <img src="jiutun.png" alt="">
+                </div>
+                <h3>SSR 酒吞童子</h3>
+                <p>号称站在妖族顶端的男人但是......</p>
+            </li>
+            <li>
+                <div class="img">
+                    <img src="cimu.png" alt="">
+                </div>
+                <h3>SSR 茨木童子</h3>
+                <p>虽是一拳超人但是心里只想着挚友.....</p>
+            </li>
+            <li>
+                <div class="img">
+                    <img src="dagou.png" alt="">
+                </div>
+                <h3>SSR 大天狗</h3>
+                <p>脸和翅膀很配呢可惜长残了......</p>
+            </li>
+            <li>
+                <div class="img">
+                    <img src="dengjie.png" alt="">
+                </div>
+                <h3>SSR 青行灯</h3>
+                <p>自己提着灯让你看腿的小姐姐很好呢.....</p>
+            </li>
+            <li>
+                <div class="img">
+                    <img src="nver.png" alt="">
+                </div>
+                <h3>SR 雪女</h3>
+                <p>陪着阿爸战斗到最后才不是因为腿.....</p>
+            </li>
+            <li>
+                <div class="img">
+                    <img src="tututu.png" alt="">
+                </div>
+                <h3>SR 狐妖</h3>
+                <p>沉迷耍帅放弃输出要你何用.......</p>
+            </li>
+        </ol>
+    </section>
+</body>
+
+</html>

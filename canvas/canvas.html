@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>phone-touch</title>
+    <style>
+        .main {
+            height: 100vh;
+            position: relative;
+        }
+
+        .control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input{
+            margin: 10px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="control">
+        <label><input type="radio" name="tool" value="pen"  checked>pen</label>
+        <label><input type="radio" name="tool" value="eraser">eraser</label>
+        <label><input type="radio" name="tool" value="reset">reset</label>
+    </div>
+    <div class="main"></div>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        let width = $('.main').width()
+        let height = $('.main').height()
+        let $canvas = $(`<canvas width="${width}" height="${height}"/>`)
+        $('.main').append($canvas)
+        $canvas.css({
+            position: 'absolute',
+            top: 0,
+            left: 0,
+        })
+        let canvas = $canvas[0]
+        let lastPoint, point
+        //描点划线
+        //单击开始划线
+        $canvas.on('mousedown', function (e) {
+            let tool = getToll()
+            let { x, y } = getMousePosition(canvas, e.originalEvent)
+            mouseDownAction(tool, x, y)
+            point = true
+        })
+        function mouseDownAction(tool, x, y) {
+            if (tool === 'pen') {
+                lastPoint = { x: x, y: y }
+            } else if (tool === 'eraser') {
+                eraser(x, y, 20, 20)
+            } else if (tool === 'reset') {
+                reset()
+            }
+        }
+        //移动鼠标划线
+        $canvas.on('mousemove', function (e) {
+            if (point) {
+                e.preventDefault()
+                let tool = getToll()
+                let { x, y } = getMousePosition(canvas, e.originalEvent)
+                mouseMoveAction(tool, x, y)
+            }
+        })
+        function mouseMoveAction(tool, x, y) {
+            if (tool === 'pen') {
+                drawLine(lastPoint.x, lastPoint.y, x, y)
+                lastPoint = { x: x, y: y }
+            } else if (tool === 'eraser') {
+                eraser(x, y, 10, 10)
+            } else if (tool === 'reset') {
+                reset()
+            }
+        }
+        function drawLine(x1, y1, x2, y2) {
+            var context = canvas.getContext("2d")
+            context.beginPath();
+            context.moveTo(x1, y1);
+            context.lineTo(x2, y2);
+            context.stroke();
+        }
+        //双击停止划线
+        $canvas.on('dblclick', function (e) {
+            point = false
+            lastPoint = null
+        })
+        //得到鼠标在canvas的坐标
+        function getMousePosition(canvas, event) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top
+            };
+        }
+        //eraser
+        function eraser(x, y, width, height) {
+            var context = canvas.getContext("2d")
+            context.clearRect(x - width / 2, y - height / 2, width, height)
+        }
+        function reset() {
+            var context = canvas.getContext("2d")
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        function getToll() {
+            return $('[name=tool]:checked').val()
+        }
+    </script>
+</body>
+
+</html>

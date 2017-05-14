@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+        
+        img {
+            max-height: 200px;
+            max-width: 200px;
+        }
+        
+        ul {
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        
+        ul>li {
+            display: inline-block;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+        
+        ul>li>ol {
+            display: inline;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><img data-src="http://i1.piimg.com/567571/357b85917dee8377.png" src="http://i2.muimg.com/567571/7dea2a43703535ab.png"
+                alt="酒吞童子">
+            <ol>
+                <li>酒吞童子</li>
+            </ol>
+        </li>
+        <li><img data-src="http://i4.buimg.com/567571/22b70105973a71e9.png" src="http://i2.muimg.com/567571/7dea2a43703535ab.png"
+                alt="茨木童子">
+            <ol>
+                <li>茨木童子</li>
+            </ol>
+        </li>
+        <li><img data-src="http://i2.muimg.com/567571/a064867465d2c7b1.png" src="http://i2.muimg.com/567571/7dea2a43703535ab.png"
+                alt="大天狗">
+            <ol>
+                <li>大天狗</li>
+            </ol>
+        </li>
+        <li><img data-src="http://i2.muimg.com/567571/558f9809120e2325.png" src="http://i2.muimg.com/567571/7dea2a43703535ab.png"
+                alt="妖刀姬">
+            <ol>
+                <li>妖刀姬</li>
+            </ol>
+        </li>
+        <li><img data-src="http://i2.muimg.com/567571/01b60a042b46e05a.png" src="http://i2.muimg.com/567571/7dea2a43703535ab.png"
+                alt="青行灯">
+            <ol>
+                <li>青行灯</li>
+            </ol>
+        </li>
+        <li><img data-src="http://i2.muimg.com/567571/ef28a9daf1b0ce57.png" src="http://i2.muimg.com/567571/7dea2a43703535ab.png"
+                alt="狐妖">
+            <ol>
+                <li>狐妖</li>
+            </ol>
+        </li>
+    </ul>
+
+    <script>
+        var allImages = document.getElementsByTagName('img')
+
+        for (var i = 0; i < allImages.length; i++) {
+            let img = allImages[i]
+            let url = img.getAttribute('data-src')
+            let tempImage = document.createElement('img')
+            tempImage.src = url
+            tempImage.onload = function () {
+                img.src = url
+            }
+        }
+    </script>
+</body>
+
+</html>

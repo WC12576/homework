@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+    
+    ul,
+    ol {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .logo {
+        text-align: center;
+    }
+    
+    .logo>.img {
+        display: inline-block;
+        min-width: 72px;
+        height: 72px;
+        border-radius: 36px;
+        background: #D8D8D8;
+        margin-top: 62px;
+    }
+    
+    .logo>ul {
+        margin-top: 28px;
+    }
+    
+    .logo>ul>li {
+        background: #d8d8d8;
+        display: inline-block;
+        min-width: 128px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 24px;
+        line-height: 24px;
+    }
+    
+    .banner {
+        background: #efefef;
+        text-align: center;
+        padding-top: 46px;
+        padding-bottom: 16px;
+    }
+    
+    .banner .line-two {
+        padding-bottom: 18px;
+    }
+    
+    .banner .line-two>h2 {
+        background: #d8d8d8;
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        min-width: 200px;
+        line-height: 40px;
+        border-radius: 14px;
+    }
+    
+    .banner .line-two>p {
+        background: #d8d8d8;
+        min-width: 250px;
+        line-height: 24px;
+        border-radius: 14px;
+        margin-left: 35px;
+        margin-right: 35px;
+        margin-bottom: 18px;
+        margin-top: 18px;
+    }
+    
+    .banner .line-one {
+        display: none;
+    }
+    
+    .banner .line-one>h2 {
+        display: inline-block;
+        margin-left: 132px;
+        margin-right: 132px;
+        margin-top: 28px;
+        margin-bottom: 17px;
+        min-width: 376px;
+        line-height: 40px;
+        border-radius: 14px;
+        background: #d8d8d8;
+    }
+    
+    .banner .line-one>p {
+        margin-left: 52px;
+        margin-right: 52px;
+        margin-top: 18px;
+        min-width: 536px;
+        line-height: 24px;
+        border-radius: 14px;
+        background: #d8d8d8;
+    }
+    
+    @media (min-width:500px) {
+        .banner .line-two {
+            display: none;
+        }
+        .banner .line-one {
+            display: block;
+        }
+        .banner .add-height {
+            margin-bottom: 70px;
+        }
+    }
+    
+    .products>ol {
+        margin-top: 42px;
+        margin-left: 16px;
+        margin-right: 16px;
+        text-align: center;
+    }
+    
+    .products>ol>li>div {
+        background: #D8D8D8;
+        min-width: 288px;
+        height: 180px;
+        margin-bottom: 20px;
+        margin-top: 32px;
+        border-radius: 4px;
+    }
+    
+    .products>ol>li>h3 {
+        background: #bcbcbc;
+        max-width: 204px;
+        height: 24px;
+        margin-top: 20px;
+        margin-bottom: 14px;
+        border-radius: 4px;
+    }
+    
+    .products>ol>li>p {
+        background: #bcbcbc;
+        min-width: 288px;
+        height: 16px;
+        margin-top: 14px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+    
+    @media (min-width: 500px) {
+        .products>ol {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .products>ol>li {
+            width: calc(50% - 16px);
+            box-sizing: border-box;
+        }
+    }
+    
+    @media (min-width: 1000px) {
+        .products>ol>li {
+            width: calc(33.333333% - 21.333333px);
+        }
+    }
+    
+    @media (min-width: 1200px) {
+        .products>ol {
+            max-width: 928px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+
+<body>
+    <section class="logo">
+        <div class="img"></div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </section>
+    <section class="banner">
+        <div class="line-two">
+            <h2>11111</h2>
+            <h2>222222</h2>
+        </div>
+        <div class="line-one">
+            <h2>111111222222</h2>
+        </div>
+        <div class="line-two">
+            <p>333333</p>
+            <p>444444</p>
+        </div>
+        <div class="add-height">
+            <div class="line-one">
+                <p>333333</p>
+                <p>444444</p>
+            </div>
+        </div>
+
+    </section>
+    <section class="products">
+        <ol>
+            <li>
+                <div>
+                    <img src="./tututu.jpg" alt="">
+                </div>
+                <h3>1</h3>
+                <p>1</p>
+            </li>
+            <li>
+                <div>
+                    <img src="xiaogege.jpg" alt="">
+                </div>
+                <h3>1</h3>
+                <p>2</p>
+            </li>
+            <li>
+                <div>
+                    <img src="xiaojiejie'jpg'" alt="">
+                </div>
+                <h3>1</h3>
+                <p>2</p>
+            </li>
+            <li>
+                <div></div>
+                <h3>1</h3>
+                <p>2</p>
+            </li>
+            <li>
+                <div></div>
+                <h3>1</h3>
+                <p>2</p>
+            </li>
+            <li>
+                <div></div>
+                <h3>1</h3>
+                <p>2</p>
+            </li>
+
+
+        </ol>
+    </section>
+</body>
+
+</html>

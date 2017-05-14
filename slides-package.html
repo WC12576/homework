@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
+    <title>slides</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 300px;
+        }
+        
+        .slides {
+            height: 400px;
+            background: blue;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .view {
+            height: 100%;
+            background: green;
+            display: flex;
+            transition: transform 1s;
+        }
+        
+        .slide {
+            height: 100%;
+            background: red;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+        }
+        
+        .slide {
+            background: #aaa;
+        }
+        
+        .slide:nth-child(2) {
+            background: #ccc;
+        }
+        
+        .slide:nth-child(3) {
+            background: #eee;
+        }
+        
+        ol {
+            position: absolute;
+            top: 90%;
+            list-style: none;
+            width: 100%;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .control {
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            background: #C6E2E6;
+        }
+        
+        .active {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slides">
+        <div class="view">
+            <div class="slide">1</div>
+            <div class="slide">2</div>
+            <div class="slide">3</div>
+        </div>
+    </div>
+    <script>
+        window.slides = function (element) {
+            var $el = $('.slides')
+            var $view = $el.children('.view')
+            var width = $el.width()
+            var count = $el.find('.slide').length
+            var currentIndex = 0
+            var timeId
+            var $ol = $('<ol></ol>')
+
+            for (let i = 0; i < count; i++) {
+                $ol.append(`<li class="control">${i + 1}</li>`)
+            }
+            $el.append($ol)
+            $el.find('li').eq(0).addClass('active')
+            $ol.on('click', 'li', function (e) {
+                let $li = $(e.currentTarget)
+                let index = $li.index()
+                goToSlide(index)
+            })
+            function goToSlide(index) {
+                if (index < 0) {
+                    index = count - 1
+                } else if (index >= count) {
+                    index = 0
+                }
+                if (index === 0) {
+                    let $li = $el.find('.slide').eq(0).clone()
+                    $li.appendTo($view)
+                    let number = - width * count
+                    $view.one("transitionend", function () {
+                        $li.remove()
+                        let oldTransition = $view.css('transition')
+                        $view.css({
+                            transition: 'none',
+                            transform: `translateX(0px)`
+                        })
+                        $view.offset()
+                        $view.css('transition', oldTransition)
+                        currentIndex = index
+                    })
+                    $view.css({
+                        transform: `translateX(${number}px)`
+                    })
+                    $el.find('li').eq(0).addClass('active').siblings().removeClass('active')
+                    return
+                }
+                let number = - width * index
+                $view.css({
+                    transform: `translateX(${number}px)`
+                })
+
+                let $li = $el.find('li')
+                $li.eq(index).addClass('active').siblings().removeClass('active')
+                currentIndex = index
+            }
+            function autoPlay() {
+                timeId = setInterval(function () {
+                    goToSlide(currentIndex + 1)
+                }, 3000)
+            }
+            autoPlay()
+            $view.on('mouseenter', function () {
+                clearInterval(timeId)
+            })
+            $view.on('mouseleave', function () {
+                autoPlay()
+            })
+        }
+
+
+        slides(document.querySelectorAll('.slides')[0])
+    </script>
+</body>
+
+</html>

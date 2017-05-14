@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>dialog</title>
+    <style>
+        .wrapper {
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .dialog {
+            position: relative;
+            width: 80%;
+            height: 50%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 6px 3px #B8BAB7;
+        }
+        
+        .dialog-title {
+            font-size: 50px;
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        
+        .dialog-content {
+            text-align: center;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid #808080;
+            border-top: 2px solid #808080;
+            margin-top: 1em;
+        }
+        
+        .dialog-actions {
+            position: absolute;
+            top: 90%;
+            right: 8%;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="point">点我</button>
+    <div id="outputDiv"></div>
+    <script>
+        point.onclick = function () {
+            var api = dialog({
+                title: '标题',
+                content: '这是一个对话框',
+                buttons: [
+                    {
+                        text: '确定',
+                        action: function () {
+                            outputDiv.textContent = '已确定'
+                            return 1
+                        }
+                    },
+                    {
+                        text: '取消'
+                    }
+                ]
+
+            }
+
+            )
+        }
+        window.dialog = function (options) {
+            let { title, content, buttons } = options
+            let $wrap = generateHtml()
+            let api = {
+                close: function () {
+                    $wrap.hide()
+                },
+                show: function () {
+                    $div.show()
+                }
+            }
+            $(document.body).append($wrap)
+            return api
+            function generateHtml() {
+                let $wrap = $('<div class="wrapper"></div>')
+                let $div = $('<div class="dialog"></div>').appendTo($wrap)
+                let $title = $('<div class="dialog-title"></div>').text(title).appendTo($div)
+                let $content = $('<div class="dialog-content"></div>').text(content).appendTo($div)
+                let $buttons = $('<div class="dialog-actions"></div>').appendTo($div)
+                for (let i = 0; i < buttons.length; i++) {
+                    let $b = $('<button></button>').text(buttons[i].text).appendTo($buttons)
+                        .on('click', function () {
+                            let action = buttons[i].action
+                            let result = action && action()
+                            if (result !== false) { api.close()}
+                        })
+                    $b.css({
+                        'margin-left': '10px',
+                        'margin-right': '10px'
+                    })
+                }
+                return $wrap
+            }
+        }
+    </script>
+</body>
+
+</html>

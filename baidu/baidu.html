@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <title>baidu</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .topbar {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .topbar>.logo>img {
+            max-height: 50px;
+            vertical-align: top;
+        }
+
+        .topbar>.mation {
+            width: 50%;
+            margin-left: 80px;
+        }
+
+        .topbar>.mation>li {
+            display: inline-block;
+            margin: 0 15px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .topbar>.mation>li>div {
+            display: none;
+            width: 64px;
+            height: 5px;
+            background: #48A5F4;
+            border-radius: 5px;
+            position: absolute;
+            top: 120%;
+        }
+
+        .topbar>.mation>li:hover div {
+            display: block;
+        }
+
+        .topbar>.lang {
+            width: 20%;
+        }
+
+        .topbar>.lang>li {
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .swiper-container {
+            width: 80%;
+            margin-top: 50px;
+        }
+        
+        .main>img {
+            width: 100%;
+        }
+
+        .news {
+            width: 80%;
+            height: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .news>h2 {
+            margin-bottom: 30px;
+        }
+
+        .news>.news-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .news>.news-main .news-normal,
+        .news-special {
+            width: 40%;
+            height: 500px;
+            flex-grow: 1;
+        }
+
+        .news>.news-main h3 {
+            margin-top: 30px;
+            margin-left: 60px;
+        }
+
+        .news>.news-main>.news-normal h3,
+        p {
+            text-align: left;
+        }
+
+        .news>.news-main>.news-normal>.line {
+            width: 2px;
+            height: 67%;
+            display: inline-block;
+            margin-left: 40px;
+            margin-right: 80px;
+            margin-bottom: 23px;
+            background: #999;
+        }
+
+        .news>.news-main>.news-normal ul {
+            display: inline-block;
+            width: 60%;
+        }
+
+        .news>.news-main>.news-normal ul li {
+            margin: 60px 0;
+            padding: 5px 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .news-normal>ul>li:hover {
+            background: #48A5F4;
+        }
+
+        .news-normal>ul>li:hover::before {
+            content: '';
+            width: 0;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-right: 30px solid #48A5F4;
+            border-bottom: 20px solid transparent;
+            position: absolute;
+            top: 10%;
+            left: -5%;
+            z-index: -1;
+        }
+
+        .news-normal ul li p {
+            padding-left: 15px;
+        }
+
+        .circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #999;
+            position: absolute;
+            left: -93px;
+        }
+
+        .news-normal>ul>li:hover>.circle {
+            background: #48A5F4;
+        }
+
+        .news>.news-main>.news-special>h3 {
+            text-align: left;
+        }
+
+        .news-special>div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .news-special>div img {
+            max-width: 300px;
+            margin: 30px 20px;
+        }
+
+        .news-special>div img:hover {
+            transform: scale(1.2);
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .message {
+            width: 100%;
+            height: 500px;
+            background: url(img/16.jpg);
+        }
+
+        .message>.message-main {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .message>.message-main h2 {
+            text-align: center;
+            padding-top: 50px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .message>.message-main li {
+            display: inline-block;
+            margin-top: 25px;
+            margin-left: 28px;
+            margin-right: 28px;
+        }
+
+        .message>.message-main p {
+            text-align: center;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .message>.message-main .line {
+            width: 40px;
+            height: 5px;
+            background: white;
+            border-radius: 5px;
+            margin: 10px auto;
+        }
+
+        .message>.message-main img {
+            vertical-align: bottom;
+        }
+
+        .message>.message-main li:hover {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .message>.message-main li:hover .line {
+            width: 80px;
+            background: black;
+            transition-duration: 1s;
+        }
+
+        .message>.message-main li:hover p {
+            color: black;
+        }
+
+        .introuduce {
+            width: 100%;
+            background: #FAFAFA;
+            height: 500px;
+        }
+
+        .main-intro {
+            width: 60%;
+            padding-top: 50px;
+            margin: 0 auto;
+        }
+
+        .main-intro h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #9696AF;
+        }
+
+        .main-intro ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .main-intro li {
+            margin: 0 50px;
+        }
+
+        .parent {
+            position: relative;
+        }
+
+        .parent>p {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            font-size: 25px;
+            width: 100%;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .parent:hover>p {
+            display: none;
+        }
+
+        .parent>div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            background: #58A1DC;
+            opacity: 0.75;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .parent:hover div {
+            display: block;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.7);
+        }
+
+        .parent>img {
+            vertical-align: top;
+            border-radius: 10px;
+        }
+
+        .parent>div>p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%);
+            font-size: 25px;
+            color: black;
+        }
+
+        footer {
+            padding: 1em 0;
+            text-align: center;
+        }
+        #topcontrol{
+           position: fixed; 
+           bottom: 120px; 
+           right: 100px; cursor: pointer; 
+           display: none;
+        }
+         #topcontrol img{
+            width: 40px;
+            height: 40px;
+         }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="logo"><img src="img/logo.jpg" alt=""></div>
+        <ul class="mation">
+            <li>关于百度
+                <div></div>
+            </li>
+            <li>关于产品
+                <div></div>
+            </li>
+            <li>加入我们
+                <div></div>
+            </li>
+            <li>联系我们
+                <div></div>
+            </li>
+        </ul>
+        <ul class="lang">
+            <li>中文</li>
+            <li>|</li>
+            <li>EN</li>
+            <li class="fa fa-search-minus"></li>
+        </ul>
+    </div>
+    <div class="main">
+        <img src="img/1.jpg" alt="">
+        <div id="sitBanner" class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/3.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/4.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/3.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/4.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/3.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/4.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="img/2.jpg" alt=""></div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    <div class="news">
+        <h2>百度动态</h2>
+        <hr>
+        <div class="news-main">
+            <div class="news-normal">
+                <h3>新闻动态</h3>
+                <div class="line"></div>
+                <ul>
+                    <li>
+                        <div class="circle"></div>
+                        <p>百度2017年Q1营收恢复增长</p>
+                        <p>2017-5-5</p>
+                    </li>
+                    <li>
+                        <div class="circle"></div>
+                        <p>百度2017年Q1营收恢复增长</p>
+                        <p>2017-5-5</p>
+                    </li>
+                    <li>
+                        <div class="circle"></div>
+                        <p>百度2017年Q1营收恢复增长</p>
+                        <p>2017-5-5</p>
+                    </li>
+                    <li>
+                        <div class="circle"></div>
+                        <p>百度2017年Q1营收恢复增长</p>
+                        <p>2017-5-5</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="news-special">
+                <h3>新闻动态</h3>
+                <div>
+                    <img src="img/5.jpg" alt="">
+                    <img src="img/6.jpg" alt="">
+                    <img src="img/7.jpg" alt="">
+                    <img src="img/8.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="message">
+        <div class="message-main">
+            <h2>工作在百度</h2>
+            <hr>
+            <ul data-role="nav">
+                <li class="change-back">
+                    <p>我们的故事</p>
+                    <div class="line"></div>
+                    <img src="img/15.jpg" alt="">
+                </li>
+                <li class="change-back">
+                    <p>我们的故事</p>
+                    <div class="line"></div>
+                    <img src="img/13.jpg" alt=""></li>
+                <li class="change-back">
+                    <p>我们的故事</p>
+                    <div class="line"></div>
+                    <img src="img/17.jpg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+    <div class="introuduce">
+        <div class="main-intro">
+            <h2>百度公司介绍</h2>
+            <hr>
+            <ul>
+                <li>
+                    <div class="parent"><img src="img/9.jpg" alt="">
+                        <p>我们的核心价值观</p>
+                        <div>
+                            <p>简单可依赖</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="parent"><img src="img/9.jpg" alt="">
+                        <p>我们的核心价值观</p>
+                        <div>
+                            <p>简单可依赖</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="parent"><img src="img/9.jpg" alt="">
+                        <p>我们的核心价值观</p>
+                        <div>
+                            <p>简单可依赖</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="topcontrol">
+        <img src="img/top.png" alt="">
+	</div>
+    <footer>
+        &copy; 2014-
+        <script>
+            document.write(new Date().getFullYear())
+        </script> Baidu 使用百度前必读 京ICP证030173号
+    </footer>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/vendor/swiper.min.js"></script>
+    <script src="js/vendor/gototop.js"></script>
+    <script>
+        var swiper = new Swiper('#sitBanner', {
+            pagination: '.swiper-pagination',
+            slidesPerView: 4,
+            paginationClickable: true,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 50
+        });
+        var $li = $('.change-back')
+        var imgArray = ['url(img/16.jpg)', 'url(img/14.jpg)', 'url(img/18.jpg)']
+        $(".change-back").mouseover(function () {
+            var index = $(".change-back").index($(this));
+            console.log(index)
+            console.log(imgArray[index])
+            $li.parents(`.message`).css('background',imgArray[index])
+
+        })
+       /* $li.hover(
+            function(){
+                $li.parents(`.message`).css('background',imgArray[0])
+            },
+            function(){
+                $li.parents(`.message`).css('background',imgArray[1])
+            }
+        )
+        $li.hover(
+            function(){
+                $li.parents(`.message`).css('background','url(img/16.jpg)')
+            },
+            function(){
+                $li.parents(`.message`).css('background','url(img/14.jpg)')
+            }
+        )
+        console.assert(imgArray[1] === 'url(img/14.jpg)')*/
+        $(function(){	
+	        scrolltotop.offset(100,120);
+	        scrolltotop.init(); 
+        });	
+    </script>
+</body>
+
+</html>

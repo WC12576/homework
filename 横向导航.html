@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        div {
+            text-align: center;
+        }
+        
+        .parents {
+            display: inline-block;
+            vertical-align: top;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+        }
+        
+        .parents li {
+            float: left;
+            background: white;
+            text-align: center;
+            position: relative;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        
+        .parents li ul {
+            background: white;
+            display: none;
+            position: absolute;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            margin-left: -1px;
+        }
+        
+        .parents>li:hover>ul {
+            display: block;
+        }
+        
+        .parents>li>ul>li>ul {
+            display: none;
+            position: absolute;
+            left: 80%;
+            top: 20%;
+            z-index: 1
+        }
+        
+        .parents>li>ul>li:hover>ul {
+            display: block;
+        }
+        
+        .parents>li>ul>li>ul>li {
+            background: white;
+        }
+        
+        .parents a {
+            width: 150px;
+            display: block;
+            line-height: 30px;
+            padding: 10px 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="parents">
+            <li><a href="#">首页</a>
+                <ul>
+                    <li><a href="#">产品1</a></li>
+                    <li><a href="#">产品2</a></li>
+                    <li><a href="#">产品3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">关于</a>
+                <ul>
+                    <li><a href="#">联系我们</a>
+                        <ul>
+                            <li><a href="">QQ</a></li>
+                            <li><a href="">微信</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </li>
+            <li><a href="#">下载</a>
+                <ul>
+                    <li><a href="#">产品1</a></li>
+                    <li><a href="#">产品2</a></li>
+                    <li><a href="#">产品3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">博客</a></li>
+        </ul>
+</body>
+
+</html>

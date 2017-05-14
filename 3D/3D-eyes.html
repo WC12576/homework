@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <title>Document</title>
+    <style>
+        .grand {
+            background: url(http://i2.muimg.com/567571/7e20ebabd83af178.jpg);
+            height: 800px;
+            width: 1280px;
+        }
+        .leftEye{
+            display: inline-block;
+            margin-left: 570px;
+        }
+        .rightEye{
+            display: inline-block;
+            margin-right: 50px;
+        }
+        .parent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: #ddd;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            transform: rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 200px;
+        }
+        
+        .child {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        
+        .child:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: black;
+            transform: translateZ(50px);
+        }
+        
+        .child:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            background: #38000D;
+            transform: translateZ(100px);
+        }
+        
+        .child:nth-child(3) {
+            width: 20px;
+            height: 20px;
+            background: white;
+            transform: translateZ(150px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grand">
+        <div class="leftEye">
+            <div class="parent">
+                <div class="child"></div>
+                <div class="child"></div>
+                <div class="child"></div>
+            </div>
+        </div>
+        <div class="rightEye">
+            <div class="parent">
+                <div class="child"></div>
+                <div class="child"></div>
+                <div class="child"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var x = 0
+        var y = 0
+        function step() {
+            $('.parent').css({
+                transform: 'rotateX(' + x + 'deg) rotateY(' + y + 'deg)'
+            })
+            x = Math.random() * 90 - 45
+            y = Math.random() * 90 - 45
+
+            setTimeout(step, 1000)
+        }
+        step()
+    </script>
+</body>
+
+</html>

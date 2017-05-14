@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .parent1{
+            background: #ddd;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #child1{
+            width:50%;
+            padding: 80px;
+            perspective: 1000px;
+            box-shadow: inset 0 0 30px hsla(0,0%,0%,0.5);
+        }
+        #banner{
+            height: 40vh;
+            background: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0px 0px 10px 0px hsla(0,0%,0%,0.55);
+        }
+    </style>
+</head>
+<body>
+    <div class="parent1">
+        <div id="child1">
+            <div id="banner">banner</div>
+        </div>
+    </div>
+    <script>
+        child1.addEventListener('mousemove', function(e){
+
+            console.log(e.clientX)
+            console.log(e.clientY)
+            let width = child1.getBoundingClientRect().width
+            let height = child1.getBoundingClientRect().height
+            let xCenter = child1.offsetLeft + width/2
+            let yCenter = child1.offsetTop + height/2
+            let xDiff = e.clientX - xCenter
+            let yDiff = e.clientY - yCenter
+            let xPercent = xDiff / (width/2)
+            let yPercent = yDiff / (height/2)
+            let xDeg = xPercent * 5
+            let yDeg = yPercent * 5
+            banner.style.transform = `translateZ(-50px) rotateX(${-yDeg}deg) rotateY(${xDeg}deg)`
+
+        })
+    </script>
+</body>
+</html>-
